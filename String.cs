@@ -10,13 +10,17 @@ namespace ConsoleApplication9
     {
         static void Main(string[] args)
         {
-            string[] array = { "4","5","6"};
+            /*string[] array = { "4","5","6"};
             int a = int.Parse(array[0]);
             int b = int.Parse(array[1]);
             int c = int.Parse(array[2]);
             int sum = a + b + c;
             Console.WriteLine("sum:" + sum);
-            Console.ReadKey();
+            Console.ReadKey();*/
+            string s = "Hello, World, Hello";
+            s = s.Replace("Hello", "Bye");
+            Console.WriteLine(s);
+            Console.ReadLine();
         }
     }
 }
