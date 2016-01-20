@@ -11,18 +11,21 @@ namespace ConsoleApplication3
         public string id;
         public double gpa;
         public string faculty;
+        public Student(string name, string id,double gpa, string faculty){
+            this.name = name;
+            this.id = id;
+            this.gpa = gpa;
+            this.faculty = faculty;
+            }
     }
     class Program
     {
         static void Main(string[] args)
         {
-            Student student1 = new Student();
-            student1.name = "Aigerim";
-            student1.id = "15BD02052";
-            student1.gpa = 3.5;
-            student1.faculty = "FIT";
-            Console.WriteLine(student1.name +" "+  student1.id +" "+ student1.gpa +" "+ student1.faculty);
+            Student student1 = new Student("Aika", "15BD657849", 3.5, "FIT");
+            Console.WriteLine(student1.name + " " + student1.id + " " + student1.gpa + " " + student1.faculty);
             Console.ReadKey();
+            
         }
     }
 }
