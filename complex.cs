@@ -4,29 +4,69 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication10
+namespace ConsoleApplication16
 {
-    class Complex {
-        public int a;
-        public int b;
-        public int c;
-        public int d;
-        public Complex(int a, int b, int c, int d) {
+    class Complex
+    {
+        public int a, b;
+        public Complex(int a, int b)
+        {
             this.a = a;
             this.b = b;
-            this.c = c;
-            this.d = d;
         }
+        public Complex Add(Complex d)
+        {
+            Complex c = new Complex(a, b);
+            int sum = 0;
+            if (c.b % this.b == 0 && c.b > this.b)
+            {
+                sum = c.b;
+            }
+            else if (this.b % c.b == 0 && this.b > c.b)
+            {
+                sum = this.b;
+            }
 
+            else if (c.b % this.b != 0 && c.b > this.b)
+            {
+                for (int i = 0; i <= this.b * c.b; i++)
+                {
+                    if (i % c.b == 0 && i % this.b == 0)
+                    {
+                        sum = i;
+                    }
+                }
+            }
+            else if (c.b % this.b != 0 && this.b > c.b)
+            {
+                for (int i = 0; i <= this.b * c.b; i++)
+                {
+                    if (i % this.b == 0 && i % c.b == 0)
+                    {
+                        sum = i;
+                    }
+                }
+            }
+            else if (this.b == c.b)
+            {
+                sum = this.b;
+            }
+            int divizer = (this.a * (sum / this.b)) + (c.a * (sum / c.b));
+            return new Complex(divizer,sum);
+        }
+        public override string ToString()
+        {
+            return a + "/" + b;
+        }
     }
+
     class Program
     {
         static void Main(string[] args)
         {
-            Complex number = new Complex(2, 1, 3, 2);
-            int e = number.a * number.d + number.c * number.b;
-            int f = number.c * number.d;
-            Console.WriteLine("2/3 + 1/2 =" + e + "/" + f);
+            Complex c = new Complex(5, 6);
+            Complex d = new Complex(6, 7);
+            Console.WriteLine(c.Add(d));
             Console.ReadKey();
         }
     }
