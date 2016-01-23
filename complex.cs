@@ -16,47 +16,29 @@ namespace ConsoleApplication16
         }
         public Complex Add(Complex d)
         {
-            Complex c = new Complex(a, b);
-            int sum = 0;
-            if (c.b % this.b == 0 && c.b > this.b)
-            {
-                sum = c.b;
-            }
-            else if (this.b % c.b == 0 && this.b > c.b)
-            {
-                sum = this.b;
-            }
+            int x = this.a * d.b + d.a * this.b;
+            int y = this.b * d.b;
 
-            else if (c.b % this.b != 0 && c.b > this.b)
+            int k = 0;
+            for (int i = 1; i <= Math.Min(x, y); i++)
             {
-                for (int i = 0; i <= this.b * c.b; i++)
-                {
-                    if (i % c.b == 0 && i % this.b == 0)
-                    {
-                        sum = i;
-                    }
-                }
+                if (x % i == 0 && y % i == 0)
+                    k = i;
             }
-            else if (c.b % this.b != 0 && this.b > c.b)
-            {
-                for (int i = 0; i <= this.b * c.b; i++)
-                {
-                    if (i % this.b == 0 && i % c.b == 0)
-                    {
-                        sum = i;
-                    }
-                }
-            }
-            else if (this.b == c.b)
-            {
-                sum = this.b;
-            }
-            int divizer = (this.a * (sum / this.b)) + (c.a * (sum / c.b));
-            return new Complex(divizer,sum);
+            x /= k;
+            y /= k;
+            Complex c = new Complex(x, y);
+            return c;
+            
         }
         public override string ToString()
         {
             return a + "/" + b;
+        }
+        public static Complex operator +(Complex c1, Complex c2)
+        {
+            Complex c3 = new Complex(c1.a * c2.b + c2.a * c1.b, c1.b * c2.b);
+            return c3;
         }
     }
 
@@ -66,7 +48,9 @@ namespace ConsoleApplication16
         {
             Complex c = new Complex(5, 6);
             Complex d = new Complex(6, 7);
-            Console.WriteLine(c.Add(d));
+            Complex w = c + d;
+            Console.WriteLine(w);
+            //Console.WriteLine(c.Add(d));
             Console.ReadKey();
         }
     }
