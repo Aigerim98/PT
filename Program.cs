@@ -17,15 +17,20 @@ namespace ConsoleApplication3
             this.gpa = gpa;
             this.faculty = faculty;
             }
+        public override string ToString()
+        {
+            return name + " " + id + " " + gpa + " " + faculty;
+        }
     }
     class Program
     {
         static void Main(string[] args)
         {
             Student student1 = new Student("Aika", "15BD657849", 3.5, "FIT");
-            Console.WriteLine(student1.name + " " + student1.id + " " + student1.gpa + " " + student1.faculty);
-            Console.ReadKey();
-            
+            Console.WriteLine(student1);
+
+
         }
+ 
     }
 }
