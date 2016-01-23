@@ -11,7 +11,7 @@ namespace ConsoleApplication15
         static bool isPrime(int number)
         {
             if (number < 2) return false;
-            for (int i = 2; i <= Math.Sqrt(number); i++)
+            for (int i = 2; i <= Math.Sqrt(number); i++)//функция для перебора чисел
             {
                 if (number % i == 0) return false;
             }
@@ -19,16 +19,17 @@ namespace ConsoleApplication15
         }
         static void Main(string[] args)
         {
-            /*int n;
+            //решето эратосфена
+            int n;
             n = int.Parse(Console.ReadLine());
-            bool[] isPrime = new bool[n];
+            bool[] isPrime = new bool[n];//создание массива типа bool
             for (int i = 0; i < n; i++)
             {
-                isPrime[i] = true;
+                isPrime[i] = true;//заполнение массива true
             }
-            for (int i = 2; i <= n; i++)
+            for (int i = 2; i < n; i++)
             {
-                for (int j = i + i; j <= n; j = j + i)
+                for (int j = i + i; j < n; j = j + i)//изначально цикл начинается с 2 и во втором вложенном цикле он пробегается по числам кратным на 2 и зачёркивает их, затем выходит из цикла и начинает проверять 3
                 {
                     isPrime[j] = false;
                 }
@@ -38,18 +39,8 @@ namespace ConsoleApplication15
                 if (isPrime[i])
                     Console.WriteLine(i);
             }
-            Console.ReadKey();*/
-
-            int n = int.Parse(Console.ReadLine());
-            for (int i = 2; i <= n; i++)
-            {
-                if (isPrime(i))
-                {
-                    Console.WriteLine("The number {0} is a simple", i.ToString());
-                }
-               
-            }
             Console.ReadKey();
+
         }
     }
 }
