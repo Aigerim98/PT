@@ -12,7 +12,7 @@ namespace ConsoleApplication9
         static void Main(string[] args)
         {
             
-            string s = "12345678910";
+           /* string s = "12345678910";
               char[] array = s.ToCharArray();
               int sum = 0;
 
@@ -22,10 +22,7 @@ namespace ConsoleApplication9
                   
                       sum += (array[i] - '0');
                   }
-
-
-              Console.WriteLine(sum);
-              Console.ReadKey();
+                  */
             /*string s = "Hello, world";
             char[] array = s.ToCharArray();
             for (int i = 0; i < s.Length; i++) {
@@ -39,7 +36,7 @@ namespace ConsoleApplication9
                 Console.WriteLine(f.Name);
             }
             if (!File.Exists(path)) {
-
+                
             }
 
 
