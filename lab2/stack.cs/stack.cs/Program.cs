@@ -10,35 +10,41 @@ namespace stack.cs
 {
     class Program
     {
-        static Stack<string> LookIn(string path)
+        static void LookIn(string path)
         {
-            Stack<string> files = new Stack<string>();
+            //Stack<string> files = new Stack<string>();
             Stack<string> dirs = new Stack<string>();
 
-            foreach (string p in Directory.GetFiles(path))
+            dirs.Push(path);
+            while (dirs.Count > 0)
+            {
+                DirectoryInfo current = new DirectoryInfo(dirs.Pop());
+                DirectoryInfo[] subDirs = current.GetDirectories();
+                FileInfo[] files = current.GetFiles();
+                Console.WriteLine(current);
+                foreach(FileInfo file in files)
+                {
+                    Console.WriteLine(file);
+                }
+                foreach(DirectoryInfo d in subDirs)
+                {
+                    dirs.Push(d.FullName);
+                }
+            }
+                
+        }
+            /*foreach (string p in Directory.GetFiles(path))
             {
                 files.Push(p);
             }
             foreach (string d in Directory.GetDirectories(path))
             {
                 dirs.Push(d);
-            }
-        }
-        /*static void Look(string path)
-        {
-            DirectoryInfo dir = new DirectoryInfo(path);
-            Console.WriteLine(dir.FullName + " " + dir.GetFiles().Length);
-            DirectoryInfo[] d = dir.GetDirectories();
-            Stack<DirectoryInfo> directories = new Stack<DirectoryInfo>();
-            for (int i = 0; i < d.Length; i++)
-            {
-                directories.Push(Look(d[i]));
-            }
-        }*/
-    
+            }*/
         static void Main(string[] args)
         {
-            
+            LookIn(@"C:\Users\Айгерим\Desktop\html");
+            Console.ReadKey();
         }
     }
 }
