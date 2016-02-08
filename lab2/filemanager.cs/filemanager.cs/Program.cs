@@ -11,7 +11,7 @@ namespace filemanager.cs
     {
         static void Main(string[] args)
         {
-            string path = @"C:\Users\Айгерим\Desktop\c++\far2.0";
+            string path = @"C:\Users\Айгерим\Documents\Visual Studio 2015";
             DirectoryInfo dir = new DirectoryInfo(path);
             List<FileSystemInfo> items = new List<FileSystemInfo>();
             items.AddRange(dir.GetDirectories());
@@ -46,25 +46,30 @@ namespace filemanager.cs
                     if (index < items.Count - 1)
                         index++;
                 }
-
-                if (button.Key == ConsoleKey.Enter)
+                if(button.Key == ConsoleKey.Enter)
                 {
-                    for (int i = 0; i < items.Count; i++)
+
+                    if (items[index].GetType() == typeof(DirectoryInfo))
                     {
-                        if (items[index].GetType() == typeof(DirectoryInfo))
-                        {
-                            path = items[index].FullName;
-                            dir = new DirectoryInfo(path);
-                            items.Clear();
-                            items.AddRange(dir.GetDirectories());
-                            items.AddRange(dir.GetFiles());
-                            index = 0;
-                        }
+                        path = items[index].FullName;
+                        dir = new DirectoryInfo(path);
+                        items.Clear();
+                        items.AddRange(dir.GetDirectories());
+                        items.AddRange(dir.GetFiles());
+                        index = 0;
                     }
+                }
+                if (button.Key == ConsoleKey.Escape)
+                {
+                    Console.Clear();
+                    dir =  dir.Parent;
+                    items.Clear();
+                    items.AddRange(dir.GetDirectories());
+                    items.AddRange(dir.GetFiles());
+                    index = 0;
                 }
                 Console.Clear();
             }
         }
-        
     }
 }
