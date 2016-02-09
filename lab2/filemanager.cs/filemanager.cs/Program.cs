@@ -9,6 +9,26 @@ namespace filemanager.cs
 {
     class Program
     {
+        static void LookIn(string path)
+        {
+            Stack<string> dirs = new Stack<string>();
+            dirs.Push(path);
+            while (dirs.Count > 0)
+            {
+                DirectoryInfo cur = new DirectoryInfo(dirs.Pop());
+                DirectoryInfo[] subd = cur.GetDirectories();
+                FileInfo[] fil = cur.GetFiles();
+                Console.WriteLine(cur);
+                foreach(FileInfo files in fil)
+                {
+                    Console.WriteLine(files);
+                }
+                foreach(DirectoryInfo d in subd)
+                {
+                    dirs.Push(d.FullName);
+                }
+            }
+        }
         static void Main(string[] args)
         {
             string path = @"C:\Users\Айгерим\Documents\Visual Studio 2015";
@@ -54,6 +74,7 @@ namespace filemanager.cs
                         path = items[index].FullName;
                         dir = new DirectoryInfo(path);
                         items.Clear();
+                        //LookIn(path);
                         items.AddRange(dir.GetDirectories());
                         items.AddRange(dir.GetFiles());
                         index = 0;
