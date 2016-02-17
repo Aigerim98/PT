@@ -25,8 +25,25 @@ namespace snake.cs
             body[0].y += dy;
             if (body[0].x == game.foods.body[0].x && body[0].y == game.foods.body[0].y)
             {
-                    body.Add(new point(0, 0));
-                    game.foods.new_food();
+                   body.Add(new point(0, 0));
+                   game.foods.new_food();
+            }
+        }
+        public bool SnakeinSnake()
+        {
+            foreach(point p in body)
+            {
+                if (body[0].x == p.x && body[0].y == p.y)
+                    return true;
+            }
+            return false;
+        }
+        public void newPosition()
+        {
+            game.snake.body.Clear();
+            if (Collision() == false)
+            {
+                game.snake.body.Add(new point(new Random().Next() % 15, new Random().Next() % 15));
             }
         }
         public bool Collision()

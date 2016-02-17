@@ -60,17 +60,27 @@ namespace snake.cs
                     else
                         game.snake.body[0].x = 0;
                 }
-                if (snake.body.Count % 5 == 0)
+                if (snake.body.Count % 10 == 0)
                 {
+                    wall.body.Clear();
+                    snake.newPosition();
                     ++k;
                     wall.Level(k);               
                 }
                 if (foods.CollissionWithWall())
                 {
                     foods.new_food();
-
                 }
                 if(GameOver = snake.Collision())
+                {
+                    Console.Clear();
+                    Console.SetCursorPosition(10, 10);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("Game Over!");
+                    info();
+                    Console.ReadKey();
+                }
+                if (GameOver == snake.SnakeinSnake())
                 {
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);
