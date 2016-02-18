@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    class drawer
+    public class drawer
     {
         public ConsoleColor color;
         public char sign;
@@ -23,19 +24,22 @@ namespace snake.cs
                 Console.Write(sign);
             }
         }
-        /*public void Save()
+        public void Save()
         {
-            FileStream fs;
+            string fileName = "";
+            if (sign == '*')
+                fileName = "food.xml";
+            if (sign == '#')
+                fileName = "wall.xml";
             if (sign == '0')
-                fs = new FileStream("snake.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            else if (sign == '*')
-                fs = new FileStream("food.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            else if(sign == '#')
-                fs = new FileStream("wall.xml", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            
+                fileName = "snake.xml";
+
+            FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             XmlSerializer xs = new XmlSerializer(GetType());
-            xs.Serialize(fs,this);
+
+            xs.Serialize(fs, this);
             fs.Close();
+
         }
         public void Resume()
         {
@@ -49,14 +53,14 @@ namespace snake.cs
             FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             XmlSerializer xs = new XmlSerializer(GetType());
 
-            if (sign == '0')
-                game.foods = xs.Deserialize(fs) as food;
             if (sign == '*')
+                game.foods = xs.Deserialize(fs) as food;
+            if (sign == '0')
                 game.snake = xs.Deserialize(fs) as snake;
             if (sign == '#')
                 game.wall = xs.Deserialize(fs) as wall;
 
             fs.Close();
-        }*/
+        }
     }
 }

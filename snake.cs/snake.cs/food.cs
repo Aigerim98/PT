@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    class food: drawer
+    public class food: drawer
     {
         public food()
         {
@@ -23,7 +23,17 @@ namespace snake.cs
                   body[0].x = x;
                   body[0].y = y;
         }
-
+        public bool foodInSnake()
+        {
+            for(int i = 0; i < game.snake.body.Count; i++)
+            {
+                if(body[0].x==game.snake.body[i].x && body[0].y == game.snake.body[i].y)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public bool CollissionWithWall()
         {
             foreach (point p in game.wall.body)
@@ -32,7 +42,6 @@ namespace snake.cs
                     return true;
             }
             return false;
-
         }
     }
 }

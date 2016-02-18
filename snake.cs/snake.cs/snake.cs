@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    class snake:drawer
+    public class snake:drawer
     {
         public snake()
         {
@@ -31,12 +31,12 @@ namespace snake.cs
         }
         public bool SnakeinSnake()
         {
-            foreach(point p in body)
+            for(int i=1;i<body.Count;i++)
             {
-                if (body[0].x == p.x && body[0].y == p.y)
-                    return true;
+                if (body[0].x == body[i].x && body[0].y == body[i].y)
+                    return false;
             }
-            return false;
+            return true;
         }
         public void newPosition()
         {

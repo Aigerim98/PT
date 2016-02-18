@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    class game
+    public class game
     {
         public static food foods = new food();
         public static snake snake = new snake();
@@ -71,12 +71,20 @@ namespace snake.cs
                 {
                     foods.new_food();
                 }
+                if(button.Key == ConsoleKey.Enter)
+                {
+                    Save();
+                }
+                if (button.Key == ConsoleKey.Escape)
+                {
+                    Resume();
+                }
                 if(GameOver = snake.Collision())
                 {
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Game Over!");
+                    Console.Write("Game Over!"+ " "+"level {0}",k);
                     info();
                     Console.ReadKey();
                 }
@@ -85,7 +93,7 @@ namespace snake.cs
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Game Over!");
+                    Console.Write("Game Over!" + " " + "level {0}",k);
                     info();
                     Console.ReadKey();
                 }
@@ -108,7 +116,7 @@ namespace snake.cs
             Console.WriteLine(sum);
         }
 
-        /*public void Save()
+        public void Save()
         {
             snake.Save();
             foods.Save();
@@ -119,6 +127,6 @@ namespace snake.cs
             snake.Resume();
             foods.Resume();
             wall.Resume();
-        }*/
+        }
     }
 }

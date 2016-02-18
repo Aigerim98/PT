@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    class wall:drawer
+    public class wall:drawer
     {
         public wall()
         {
@@ -18,7 +18,7 @@ namespace snake.cs
         {
             string name = string.Format("level{0}.txt", level);
             
-            FileStream fs = new FileStream(name, FileMode.Open, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(name, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             StreamReader sr = new StreamReader(fs);
             
             string[] token = sr.ReadToEnd().Split('\n');

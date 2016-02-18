@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    class point
+    public class point
     {
        public int x;
        public int y;
