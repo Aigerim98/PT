@@ -9,16 +9,18 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    public class drawer
+
+    [Serializable]
+    public class Drawer
     {
         public ConsoleColor color;
         public char sign;
-        public List<point> body = new List<point>();
-        public drawer() { }
+        public List<Point> body = new List<Point>();
+        public Drawer() { }
         public void Draw()
         {
             Console.ForegroundColor = color;
-            foreach (point p in body)
+            foreach (Point p in body)
             {
                 Console.SetCursorPosition(p.x, p.y);
                 Console.Write(sign);
@@ -28,22 +30,53 @@ namespace snake.cs
         {
             string fileName = "";
             if (sign == '*')
+                fileName = "food.dat";
+            if (sign == '#')
+                fileName = "wall.dat";
+            if (sign == '0')
+               fileName = "snake.dat";
+            FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(fs, this);
+            fs.Close();
+            /*string fileName = "";
+            if (sign == '0')
+                fileName = "snake.xml";
+            if (sign == '*')
                 fileName = "food.xml";
             if (sign == '#')
                 fileName = "wall.xml";
-            if (sign == '0')
-                fileName = "snake.xml";
-
+           
             FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             XmlSerializer xs = new XmlSerializer(GetType());
 
             xs.Serialize(fs, this);
-            fs.Close();
+            fs.Close();*/
 
         }
         public void Resume()
         {
-            string filename = "";
+            string fileName = "";
+            if (sign == '*')
+                fileName = "food.dat";
+            if (sign == '#')
+
+                fileName = "wall.dat";
+            if (sign == '0')
+                fileName = "snake.dat";
+            FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            BinaryFormatter bf = new BinaryFormatter();
+
+            if (sign == '*')
+                Game.foods = bf.Deserialize(fs) as Food;
+            if (sign == '#')
+                Game.wall = bf.Deserialize(fs) as Wall;
+
+            if (sign == '0')
+                Game.snake = bf.Deserialize(fs) as Snake;
+
+            fs.Close();
+            /*string filename = "";
             if (sign == '0')
                 filename = "snake.xml";
             if (sign == '*')
@@ -54,13 +87,13 @@ namespace snake.cs
             XmlSerializer xs = new XmlSerializer(GetType());
 
             if (sign == '*')
-                game.foods = xs.Deserialize(fs) as food;
+                Game.foods = xs.Deserialize(fs) as Food;
             if (sign == '0')
-                game.snake = xs.Deserialize(fs) as snake;
+                Game.snake = xs.Deserialize(fs) as Snake;
             if (sign == '#')
-                game.wall = xs.Deserialize(fs) as wall;
+                Game.wall = xs.Deserialize(fs) as Wall;
 
-            fs.Close();
+            fs.Close();*/
         }
     }
 }

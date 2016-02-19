@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    public class point
+    public class Point
     {
        public int x;
        public int y;
-        public point(int x, int y)
+        public Point() { }
+        public Point(int x, int y)
         {
             this.x = x;
             this.y = y;

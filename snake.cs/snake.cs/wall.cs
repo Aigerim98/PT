@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    public class wall:drawer
+    public class Wall:Drawer
     {
-        public wall()
+        public Wall()
         {
             color = ConsoleColor.Blue;
             sign = '#';
@@ -27,7 +27,7 @@ namespace snake.cs
                 for (int j=0;j<token[i].Length;j++)
                 {
                     if (token[i][j] == '#')
-                        body.Add(new point(j,i));
+                        body.Add(new Point(j,i));
                 }
             }
             sr.Close();

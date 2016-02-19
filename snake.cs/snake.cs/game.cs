@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    public class game
+    public class Game
     {
-        public static food foods = new food();
-        public static snake snake = new snake();
-        public static wall wall = new wall();
+        public static Food foods = new Food();
+        public static Snake snake = new Snake();
+        public static Wall wall = new Wall();
         public static bool GameOver = false;
         public int k = 1;
         public void draw()
@@ -20,7 +20,7 @@ namespace snake.cs
             foods.Draw();
             wall.Draw();
         }
-        public game()
+        public Game()
         {
             init();
             play();
@@ -34,31 +34,31 @@ namespace snake.cs
                 ConsoleKeyInfo button = Console.ReadKey();
                 if (button.Key == ConsoleKey.UpArrow)
                 {
-                    if (game.snake.body[0].y > 0)
+                    if (Game.snake.body[0].y > 0)
                         snake.move(0, -1);
                     else
-                        game.snake.body[0].y = Console.WindowHeight - 2;
+                        Game.snake.body[0].y = Console.WindowHeight - 2;
                 }
                 if (button.Key == ConsoleKey.DownArrow)
                 {
-                    if (game.snake.body[0].y < Console.WindowHeight - 2)
+                    if (Game.snake.body[0].y < Console.WindowHeight - 2)
                         snake.move(0, 1);
                     else
-                        game.snake.body[0].y = 0;
+                        Game.snake.body[0].y = 0;
                 } 
                 if (button.Key == ConsoleKey.LeftArrow)
                 {
-                    if (game.snake.body[0].x > 0)
+                    if (Game.snake.body[0].x > 0)
                         snake.move(-1, 0);
                     else
-                        game.snake.body[0].x = Console.WindowWidth - 2;
+                        Game.snake.body[0].x = Console.WindowWidth - 2;
                 }
                 if (button.Key == ConsoleKey.RightArrow)
                 {
-                    if (game.snake.body[0].x < Console.WindowWidth - 2)
+                    if (Game.snake.body[0].x < Console.WindowWidth - 2)
                         snake.move(1, 0);
                     else
-                        game.snake.body[0].x = 0;
+                        Game.snake.body[0].x = 0;
                 }
                 if (snake.body.Count % 10 == 0)
                 {
@@ -68,6 +68,10 @@ namespace snake.cs
                     wall.Level(k);               
                 }
                 if (foods.CollissionWithWall())
+                {
+                    foods.new_food();
+                }
+                if (foods.foodInSnake())
                 {
                     foods.new_food();
                 }
@@ -107,7 +111,7 @@ namespace snake.cs
         public void info()
         {
             int sum = 0;
-            for(int i = 0; i < game.snake.body.Count; i++)
+            for(int i = 0; i < Game.snake.body.Count; i++)
             {
                 sum += 1;
             }

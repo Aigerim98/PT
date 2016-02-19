@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
-    public class food: drawer
+    public class Food: Drawer
     {
-        public food()
+        public Food()
         {
             color = ConsoleColor.Red;
             sign = '*';
@@ -18,25 +18,25 @@ namespace snake.cs
               int x = new Random().Next() % 15;
               int y = new Random().Next() % 15;
               if (body.Count == 0)
-                  body.Add(new point(x, y));
+                  body.Add(new Point(x, y));
               else
                   body[0].x = x;
                   body[0].y = y;
         }
         public bool foodInSnake()
         {
-            for(int i = 0; i < game.snake.body.Count; i++)
+            for(int i = 0; i < Game.snake.body.Count; i++)
             {
-                if(body[0].x==game.snake.body[i].x && body[0].y == game.snake.body[i].y)
+                if(body[0].x==Game.snake.body[i].x && body[0].y == Game.snake.body[i].y)
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
         public bool CollissionWithWall()
         {
-            foreach (point p in game.wall.body)
+            foreach (Point p in Game.wall.body)
             {
                 if (body[0].x == p.x && body[0].y == p.y)
                     return true;

@@ -11,13 +11,7 @@ namespace snake.cs
     {
         static void Main(string[] args)
         {
-            Console.SetCursorPosition(10,10);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Name:");
-            Console.SetCursorPosition(10,11);
-            string name = Console.ReadLine();
-            Console.WriteLine(name + "/n" + "Hello," + name + "!");
-            game game = new game();
+            Game game = new Game();
             
 
         }
