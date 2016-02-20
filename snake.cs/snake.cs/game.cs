@@ -10,11 +10,11 @@ namespace snake.cs
     [Serializable]
     public class Game
     {
-        public static Food foods = new Food();
+        public static Food foods = new Food();//создение обхектов класса
         public static Snake snake = new Snake();
         public static Wall wall = new Wall();
         public static bool GameOver = false;
-        public int k = 1;
+        public int k = 1;//счетчик для изменения уровней
         public void draw()
         {
             Console.Clear();
@@ -62,7 +62,7 @@ namespace snake.cs
                     else
                         Game.snake.body[0].x = 0;
                 }
-                if (snake.body.Count % 10 == 0)
+                if (snake.body.Count % 10 == 0)//изменение урловней
                 {
                     wall.body.Clear();
                     snake.newPosition();
@@ -85,7 +85,7 @@ namespace snake.cs
                 {
                     Resume();
                 }
-                if(GameOver = snake.Collision())
+                if(GameOver = snake.Collision())//условия для выхода из игры
                 {
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);
@@ -94,7 +94,7 @@ namespace snake.cs
                     info();
                     Console.ReadKey();
                 }
-                if (GameOver == snake.SnakeinSnake())
+                if (GameOver == snake.SnakeinSnake())//условия для выхода из игры
                 {
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);
@@ -110,7 +110,7 @@ namespace snake.cs
             foods.new_food();
             wall.Level(k);
         }
-        public void info()
+        public void info()//выводит на консоль количество очков в конце игры
         {
             int sum = 0;
             for(int i = 0; i < Game.snake.body.Count; i++)

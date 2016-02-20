@@ -26,7 +26,7 @@ namespace snake.cs
                   body[0].x = x;
                   body[0].y = y;
         }
-        public bool foodInSnake()
+        public bool foodInSnake()//проверка не появляется ли еда в змейке
         {
             for(int i = 0; i < Game.snake.body.Count; i++)
             {
@@ -37,7 +37,7 @@ namespace snake.cs
             }
             return false;
         }
-        public bool CollissionWithWall()
+        public bool CollissionWithWall()//проверка не появляется ли еда внутри стены
         {
             foreach (Point p in Game.wall.body)
             {

@@ -20,7 +20,7 @@ namespace snake.cs
         {
             string name = string.Format("level{0}.txt", level);
             
-            FileStream fs = new FileStream(name, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            FileStream fs = new FileStream(name, FileMode.OpenOrCreate, FileAccess.ReadWrite);//чтение из txt файла
             StreamReader sr = new StreamReader(fs);
             
             string[] token = sr.ReadToEnd().Split('\n');

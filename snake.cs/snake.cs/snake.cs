@@ -8,30 +8,30 @@ namespace snake.cs
 {
 
     [Serializable]
-    public class Snake:Drawer
+    public class Snake:Drawer//наследование от drawer
     {
         public Snake()
         {
             color = ConsoleColor.Green;
             sign = '0';
-            body.Add(new Point(10,10));
+            body.Add(new Point(10,10));//появление головы змейки
         }
         public void move(int dx, int dy)
         {
             for (int i = body.Count - 1; i > 0; i--)
             {
-                body[i].x = body[i - 1].x;
+                body[i].x = body[i - 1].x;//при передвижении предыдущие части тела преходят в другую
                 body[i].y = body[i - 1].y;
             }
             body[0].x += dx;
             body[0].y += dy;
-            if (body[0].x == Game.foods.body[0].x && body[0].y == Game.foods.body[0].y)
+            if (body[0].x == Game.foods.body[0].x && body[0].y == Game.foods.body[0].y)//проверка на съедение еды
             {
                    body.Add(new Point(0, 0));
                    Game.foods.new_food();
             }
         }
-        public bool SnakeinSnake()
+        public bool SnakeinSnake()//проверка ест ли змейка саму себя
         {
             for(int i=1;i<body.Count;i++)
             {
@@ -40,7 +40,7 @@ namespace snake.cs
             }
             return true;
         }
-        public void newPosition()
+        public void newPosition()//новая безопасная позиция змейки при изменеия уровня
         {
             Game.snake.body.Clear();
             if (Collision() == false)
@@ -48,7 +48,7 @@ namespace snake.cs
                 Game.snake.body.Add(new Point(new Random().Next() % 15, new Random().Next() % 15));
             }
         }
-        public bool Collision()
+        public bool Collision()//столкновение со стеной
         {
             for (int i = 0; i < Game.wall.body.Count; i++)
             {
