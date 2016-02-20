@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace snake.cs
 {
 
-    [Serializable]
+    [Serializable]//подключение BinaryFormatter
     public class Drawer
     {
         public ConsoleColor color;
@@ -31,12 +31,12 @@ namespace snake.cs
             try {
                 string fileName = "";
                 if (sign == '*')
-                    fileName = "food.dat";
+                    fileName = "food.dat";//создание файла с расширением dat
                 if (sign == '#')
                     fileName = "wall.dat";
                 if (sign == '0')
                     fileName = "snake.dat";
-                FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);//создание потока для записи в файл
                 BinaryFormatter bf = new BinaryFormatter();
                 bf.Serialize(fs, this);
                 fs.Close();
