@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
+
+    [Serializable]
     public class Snake:Drawer
     {
         public Snake()

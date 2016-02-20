@@ -1,0 +1,27 @@
+System.Runtime.Serialization.SerializationException не обработано
+  HResult=-2146233076
+  Message=“ип "snake.cs.Snake" в сборке "snake.cs, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" не помечен как сериализуемый.
+  Source=mscorlib
+  StackTrace:
+       в System.Runtime.Serialization.FormatterServices.InternalGetSerializableMembers(RuntimeType type)
+       в System.Runtime.Serialization.FormatterServices.GetSerializableMembers(Type type, StreamingContext context)
+       в System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.InitMemberInfo()
+       в System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.InitSerialize(Object obj, ISurrogateSelector surrogateSelector, StreamingContext context, SerObjectInfoInit serObjectInfoInit, IFormatterConverter converter, ObjectWriter objectWriter, SerializationBinder binder)
+       в System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.Serialize(Object obj, ISurrogateSelector surrogateSelector, StreamingContext context, SerObjectInfoInit serObjectInfoInit, IFormatterConverter converter, ObjectWriter objectWriter, SerializationBinder binder)
+       в System.Runtime.Serialization.Formatters.Binary.ObjectWriter.Serialize(Object graph, Header[] inHeaders, __BinaryWriter serWriter, Boolean fCheck)
+       в System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(Stream serializationStream, Object graph, Header[] headers, Boolean fCheck)
+       в System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(Stream serializationStream, Object graph)
+       в snake.cs.Drawer.Save() в C:\Users\јйгерим\Desktop\c++\far2.0\PT\snake.cs\snake.cs\Drawer.cs:строка 40
+       в snake.cs.Game.Save() в C:\Users\јйгерим\Desktop\c++\far2.0\PT\snake.cs\snake.cs\Game.cs:строка 125
+       в snake.cs.Game.play() в C:\Users\јйгерим\Desktop\c++\far2.0\PT\snake.cs\snake.cs\Game.cs:строка 80
+       в snake.cs.Game..ctor() в C:\Users\јйгерим\Desktop\c++\far2.0\PT\snake.cs\snake.cs\Game.cs:строка 26
+       в snake.cs.Program.Main(String[] args) в C:\Users\јйгерим\Desktop\c++\far2.0\PT\snake.cs\snake.cs\Program.cs:строка 14
+       в System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+       в System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+       в Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+       в System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+       в System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+       в System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+       в System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+       в System.Threading.ThreadHelper.ThreadStart()
+  InnerException: 

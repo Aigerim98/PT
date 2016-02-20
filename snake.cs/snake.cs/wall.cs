@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
+
+    [Serializable]
     public class Wall:Drawer
     {
         public Wall()

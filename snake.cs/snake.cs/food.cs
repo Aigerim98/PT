@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
+
+    [Serializable]
     public class Food: Drawer
     {
+       
         public Food()
         {
             color = ConsoleColor.Red;

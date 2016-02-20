@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace snake.cs
 {
+
+    [Serializable]
     public class Game
     {
         public static Food foods = new Food();

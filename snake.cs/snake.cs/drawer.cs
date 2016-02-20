@@ -28,17 +28,24 @@ namespace snake.cs
         }
         public void Save()
         {
-            string fileName = "";
-            if (sign == '*')
-                fileName = "food.dat";
-            if (sign == '#')
-                fileName = "wall.dat";
-            if (sign == '0')
-               fileName = "snake.dat";
-            FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(fs, this);
-            fs.Close();
+            try {
+                string fileName = "";
+                if (sign == '*')
+                    fileName = "food.dat";
+                if (sign == '#')
+                    fileName = "wall.dat";
+                if (sign == '0')
+                    fileName = "snake.dat";
+                FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                BinaryFormatter bf = new BinaryFormatter();
+                bf.Serialize(fs, this);
+                fs.Close();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+                Console.ReadKey();
+            }
             /*string fileName = "";
             if (sign == '0')
                 fileName = "snake.xml";
@@ -56,26 +63,33 @@ namespace snake.cs
         }
         public void Resume()
         {
-            string fileName = "";
-            if (sign == '*')
-                fileName = "food.dat";
-            if (sign == '#')
+            try {
+                string fileName = "";
+                if (sign == '*')
+                    fileName = "food.dat";
+                if (sign == '#')
 
-                fileName = "wall.dat";
-            if (sign == '0')
-                fileName = "snake.dat";
-            FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            BinaryFormatter bf = new BinaryFormatter();
+                    fileName = "wall.dat";
+                if (sign == '0')
+                    fileName = "snake.dat";
+                FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                BinaryFormatter bf = new BinaryFormatter();
 
-            if (sign == '*')
-                Game.foods = bf.Deserialize(fs) as Food;
-            if (sign == '#')
-                Game.wall = bf.Deserialize(fs) as Wall;
+                if (sign == '*')
+                    Game.foods = bf.Deserialize(fs) as Food;
+                if (sign == '#')
+                    Game.wall = bf.Deserialize(fs) as Wall;
 
-            if (sign == '0')
-                Game.snake = bf.Deserialize(fs) as Snake;
+                if (sign == '0')
+                    Game.snake = bf.Deserialize(fs) as Snake;
 
-            fs.Close();
+                fs.Close();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+                Console.ReadKey();
+            }
             /*string filename = "";
             if (sign == '0')
                 filename = "snake.xml";
