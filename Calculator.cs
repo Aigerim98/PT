@@ -40,5 +40,5 @@ namespace ConsoleApplication5
             else Console.WriteLine("Wrong operation");
             Console.ReadKey();
         }
-    }
+    }5
 }
