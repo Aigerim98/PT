@@ -10,7 +10,7 @@ namespace snake.cs
     [Serializable]
     public class Game
     {
-        public static Food foods = new Food();//создение обхектов класса
+        public static Food foods = new Food();//создание объектов класса
         public static Snake snake = new Snake();
         public static Wall wall = new Wall();
         public static bool GameOver = false;
@@ -31,7 +31,7 @@ namespace snake.cs
         {
             while (GameOver==false)
             {
-                Console.Clear();
+                //Console.Clear();
                 draw();
                 ConsoleKeyInfo button = Console.ReadKey();
                 if (button.Key == ConsoleKey.UpArrow)
@@ -62,7 +62,7 @@ namespace snake.cs
                     else
                         Game.snake.body[0].x = 0;
                 }
-                if (snake.body.Count % 10 == 0)//изменение урловней
+                if (snake.body.Count % 10 == 0)//изменение уровней
                 {
                     wall.body.Clear();
                     snake.newPosition();
@@ -85,7 +85,7 @@ namespace snake.cs
                 {
                     Resume();
                 }
-                if(GameOver = snake.Collision())//условия для выхода из игры
+                if(GameOver = snake.Collision())//условие для выхода из игры
                 {
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);
@@ -94,7 +94,7 @@ namespace snake.cs
                     info();
                     Console.ReadKey();
                 }
-                if (GameOver == snake.SnakeinSnake())//условия для выхода из игры
+                if (GameOver == snake.SnakeinSnake())//условие для выхода из игры
                 {
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);

@@ -20,10 +20,10 @@ namespace snake.cs
         {
             for (int i = body.Count - 1; i > 0; i--)
             {
-                body[i].x = body[i - 1].x;//при передвижении предыдущие части тела преходят в другую
+                body[i].x = body[i - 1].x;//при передвижении предыдущие части тела переходят в другую
                 body[i].y = body[i - 1].y;
             }
-            body[0].x += dx;
+            body[0].x += dx;//голова получает направление по координатам 
             body[0].y += dy;
             if (body[0].x == Game.foods.body[0].x && body[0].y == Game.foods.body[0].y)//проверка на съедение еды
             {
