@@ -55,6 +55,9 @@
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
+            this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button
@@ -322,6 +325,7 @@
             this.button22.TabIndex = 26;
             this.button22.Text = "MR";
             this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.operation);
             // 
             // button23
             // 
@@ -331,13 +335,47 @@
             this.button23.TabIndex = 27;
             this.button23.Text = "MC";
             this.button23.UseVisualStyleBackColor = true;
-            this.button23.Click += new System.EventHandler(this.button_MC);
+            this.button23.Click += new System.EventHandler(this.operation);
+            // 
+            // button24
+            // 
+            this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button24.Location = new System.Drawing.Point(242, 244);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(41, 35);
+            this.button24.TabIndex = 28;
+            this.button24.Text = "+|-";
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.operation);
+            // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(242, 82);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(41, 35);
+            this.button25.TabIndex = 29;
+            this.button25.Text = "M+";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.operation);
+            // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(197, 82);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(41, 35);
+            this.button26.TabIndex = 30;
+            this.button26.Text = "MS";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Click += new System.EventHandler(this.operation);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(289, 296);
+            this.Controls.Add(this.button26);
+            this.Controls.Add(this.button25);
+            this.Controls.Add(this.button24);
             this.Controls.Add(this.button23);
             this.Controls.Add(this.button22);
             this.Controls.Add(this.button21);
@@ -370,6 +408,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -405,6 +444,9 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button26;
     }
 }
 

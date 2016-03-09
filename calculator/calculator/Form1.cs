@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using System.Xml.Serialization;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
@@ -17,6 +19,7 @@ namespace calculator
         Double value = 0;
         String operations = "";
         bool operation_pressed = false;
+        string filename = "";
         public Form1()
         {
             InitializeComponent();
@@ -74,17 +77,22 @@ namespace calculator
                     textBox1.Text = (value * value).ToString();
                     break; 
                 case "%":
-                    textBox1.Text = ((value * Double.Parse(textBox1.Text)) / 100).ToString();
+                    textBox1.Text = ((value / 100.0)*Double.Parse(textBox1.Text)).ToString();
                     break;
-                case "MC":
+                case "MS":
                     //FileStream fread = new FileStream(@"C:\test\input.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                    FileStream fwrite = new FileStream(@"C:\test\output.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+
+                    filename = "input.txt";
+                    FileStream fwrite = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                     //StreamReader sr = new StreamReader(fread);
                     StreamWriter sw = new StreamWriter(fwrite);
-                    Button b = (Button)sender;
-                    textBox1.Text = textBox1.Text + b.Text;
-                    sw.WriteLine(textBox1.Text);
+                    //XmlSerializer xs = new XmlSerializer(GetType());
+                    sw.WriteLine(value);
+                    //xs.Serialize(fwrite, this);
                     sw.Close();
+                    break;
+                case "+|-":
+                    textBox1.Text = (-(value)).ToString();
                     break;
                 default:
                     break;        
@@ -108,20 +116,17 @@ namespace calculator
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        { 
 
         }
 
-        private void button_MC(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FileStream fread = new FileStream(@"C:\test\input.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            FileStream fwrite = new FileStream(@"C:\test\output.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            StreamReader sr = new StreamReader(fread);
-            StreamWriter sw = new StreamWriter(fwrite);
-            Button b = (Button)sender;
-            textBox1.Text = b.Text;
-            sw.WriteLine(textBox1.Text);
-            sw.Close();
+            DialogResult dr = MessageBox.Show("вы уверены, что хотите выйти?", "Закрытие калькулятора", MessageBoxButtons.YesNoCancel);
+            if (dr == DialogResult.Yes)
+                e.Cancel = false;
+            else
+                e.Cancel = true;
         }
     }
 }
