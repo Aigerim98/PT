@@ -19,7 +19,8 @@ namespace calculator
         Double value = 0;
         String operations = "";
         bool operation_pressed = false;
-        string filename = "";
+        string input = "";
+        string output = "";
         public Form1()
         {
             InitializeComponent();
@@ -82,14 +83,27 @@ namespace calculator
                 case "MS":
                     //FileStream fread = new FileStream(@"C:\test\input.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
 
-                    filename = "input.txt";
-                    FileStream fwrite = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                    input = "input.txt";
+                    FileStream fwrite = new FileStream(input, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                     //StreamReader sr = new StreamReader(fread);
                     StreamWriter sw = new StreamWriter(fwrite);
-                    //XmlSerializer xs = new XmlSerializer(GetType());
                     sw.WriteLine(value);
-                    //xs.Serialize(fwrite, this);
                     sw.Close();
+                    break;
+                case "M+":
+                    output = "output.txt";
+                    FileStream fread = new FileStream(input, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                    FileStream fwrite2 = new FileStream(output, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                    StreamReader sr = new StreamReader(fread);
+                    StreamWriter sw2 = new StreamWriter(fwrite2);
+                    string str = sr.ReadLine();
+                    int a = int.Parse(str);
+                    textBox1.Text = (value + a).ToString();
+                    sw2.Write(textBox1.Text);
+                    sw2.Close();
+                    sr.Close();
+                    fwrite2.Close();
+                    fread.Close();
                     break;
                 case "+|-":
                     textBox1.Text = (-(value)).ToString();
