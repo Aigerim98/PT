@@ -18,6 +18,8 @@ namespace snake.cs
         }
         public void move(int dx, int dy)
         {
+            //Console.SetCursorPosition(body[body.Count-1].x,body[body.Count-1].y);
+            //Console.Write(" ");
             for (int i = body.Count - 1; i > 0; i--)
             {
                 body[i].x = body[i - 1].x;//при передвижении предыдущие части тела переходят в другую

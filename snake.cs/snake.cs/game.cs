@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace snake.cs
 {
@@ -14,8 +15,11 @@ namespace snake.cs
         public static Snake snake = new Snake();
         public static Wall wall = new Wall();
         public static bool GameOver = false;
-        public int k = 1;//счетчик для изменения уровней
-        public void draw()
+        //public static int k = 1;//счетчик для изменения уровней
+        public enum Direction {up,down,left,right};
+        public static Direction direction;
+
+        public static void draw()
         {
             Console.Clear();
             snake.Draw();
@@ -25,17 +29,20 @@ namespace snake.cs
         public Game()
         {
             init();
-            play();
+            //play();
         }
-        public void play()
+        
+        /*public void play()
         {
             while (GameOver==false)
             {
                 //Console.Clear();
                 draw();
+                drawingWall();
                 ConsoleKeyInfo button = Console.ReadKey();
                 if (button.Key == ConsoleKey.UpArrow)
                 {
+                    //direction = Direction.up;
                     if (Game.snake.body[0].y > 0)
                         snake.move(0, -1);
                     else
@@ -43,6 +50,7 @@ namespace snake.cs
                 }
                 if (button.Key == ConsoleKey.DownArrow)
                 {
+                    //direction = Direction.down;
                     if (Game.snake.body[0].y < Console.WindowHeight - 2)
                         snake.move(0, 1);
                     else
@@ -50,6 +58,7 @@ namespace snake.cs
                 } 
                 if (button.Key == ConsoleKey.LeftArrow)
                 {
+                    //direction = Direction.left;
                     if (Game.snake.body[0].x > 0)
                         snake.move(-1, 0);
                     else
@@ -57,17 +66,20 @@ namespace snake.cs
                 }
                 if (button.Key == ConsoleKey.RightArrow)
                 {
+                    //direction = Direction.right;
                     if (Game.snake.body[0].x < Console.WindowWidth - 2)
                         snake.move(1, 0);
                     else
                         Game.snake.body[0].x = 0;
                 }
-                if (snake.body.Count % 10 == 0)//изменение уровней
+                if (snake.body.Count % 5 == 0)//изменение уровней
                 {
+                    //Console.Clear();
                     wall.body.Clear();
+
                     snake.newPosition();
                     ++k;
-                    wall.Level(k);               
+                    wall.Level(k);
                 }
                 if (foods.CollissionWithWall())
                 {
@@ -104,13 +116,14 @@ namespace snake.cs
                     Console.ReadKey();
                 }
             }
-        }
-        public void init()
+        }*/
+        
+        public static void init()
         {
             foods.new_food();
-            wall.Level(k);
+            //wall.Level(k);
         }
-        public void info()//выводит на консоль количество очков в конце игры
+        public static void info()//выводит на консоль количество очков в конце игры
         {
             int sum = 0;
             for(int i = 0; i < Game.snake.body.Count; i++)
@@ -122,13 +135,13 @@ namespace snake.cs
             Console.WriteLine(sum);
         }
 
-        public void Save()
+        public static void Save()
         {
             snake.Save();
             foods.Save();
             wall.Save();
         }
-        public void Resume()
+        public static void Resume()
         { 
             snake.Resume();
             foods.Resume();
