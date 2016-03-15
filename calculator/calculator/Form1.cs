@@ -19,11 +19,11 @@ namespace calculator
         Double value = 0;
         String operations = "";
         bool operation_pressed = false;
-        string input = "";
-        string output = "";
+        Double memory_num = 0;
         public Form1()
         {
             InitializeComponent();
+            
         }
 
 
@@ -81,29 +81,17 @@ namespace calculator
                     textBox1.Text = ((value / 100.0)*Double.Parse(textBox1.Text)).ToString();
                     break;
                 case "MS":
-                    //FileStream fread = new FileStream(@"C:\test\input.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
-
-                    input = "input.txt";
-                    FileStream fwrite = new FileStream(input, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                    //StreamReader sr = new StreamReader(fread);
-                    StreamWriter sw = new StreamWriter(fwrite);
-                    sw.WriteLine(value);
-                    sw.Close();
+                    memory_num=value;
+                    memory_text.Text= (value).ToString();
                     break;
                 case "M+":
-                    output = "output.txt";
-                    FileStream fread = new FileStream(input, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                    FileStream fwrite2 = new FileStream(output, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                    StreamReader sr = new StreamReader(fread);
-                    StreamWriter sw2 = new StreamWriter(fwrite2);
-                    string str = sr.ReadLine();
-                    int a = int.Parse(str);
-                    textBox1.Text = (value + a).ToString();
-                    sw2.Write(textBox1.Text);
-                    sw2.Close();
-                    sr.Close();
-                    fwrite2.Close();
-                    fread.Close();
+                    memory_text.Text = (Double.Parse(memory_text.Text)+memory_num).ToString();
+                    break;
+                case "MR":
+                    textBox1.Text = memory_text.Text;
+                    break;
+                case "MC":
+                    memory_text.Text = " ";
                     break;
                 case "+|-":
                     textBox1.Text = (-(value)).ToString();
@@ -116,12 +104,13 @@ namespace calculator
         private void button18_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
+            equation.Text = "";
             value = 0;
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -141,6 +130,16 @@ namespace calculator
                 e.Cancel = false;
             else
                 e.Cancel = true;
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+            value = memory_num;
+        }
+
+        private void memory_text_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
