@@ -14,14 +14,14 @@ namespace snake.cs
         public static Food foods = new Food();//создание объектов класса
         public static Snake snake = new Snake();
         public static Wall wall = new Wall();
-        public static bool GameOver = false;
+        //public static bool GameOver = false;
         //public static int k = 1;//счетчик для изменения уровней
         public enum Direction {up,down,left,right};
         public static Direction direction;
 
         public static void draw()
         {
-            Console.Clear();
+            //Console.Clear();
             snake.Draw();
             foods.Draw();
             wall.Draw();

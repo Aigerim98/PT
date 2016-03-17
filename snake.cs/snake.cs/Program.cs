@@ -13,17 +13,21 @@ namespace snake.cs
         public static Direction direction;
         public static int k = 1;
         public static int speed = 200;
+        public static bool GameOver = false;
+
         static void Main(string[] args)
         {
             Game.init();
             Game.wall.Level(k);
 
-            Thread t = new Thread(MoveSnake);
-            t.Start();
-            while (Game.GameOver == false)
+            //Thread t = new Thread(MoveSnake);
+            //t.Start();
+
+            Timer t1 = new Timer(MoveSnake2);
+            t1.Change(0,speed);
+            while (GameOver == false)
             {
-                //Console.Clear();
-                Game.draw();
+                //Game.draw();
                 ConsoleKeyInfo button = Console.ReadKey();
                 if (button.Key == ConsoleKey.UpArrow)
                 {
@@ -64,7 +68,7 @@ namespace snake.cs
                 {
                     Game.Resume();
                 }
-                if (Game.GameOver = Game.snake.Collision())//условие для выхода из игры
+                if (GameOver = Game.snake.Collision())//условие для выхода из игры
                 {
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);
@@ -73,7 +77,7 @@ namespace snake.cs
                     Game.info();
                     Console.ReadKey();
                 }
-                if (Game.GameOver == Game.snake.SnakeinSnake())//условие для выхода из игрыme.
+                if (GameOver == Game.snake.SnakeinSnake())//условие для выхода из игры
                 {
                     Console.Clear();
                     Console.SetCursorPosition(10, 10);
@@ -90,7 +94,7 @@ namespace snake.cs
             {
                 speed -= 50;
             }
-            while (Game.GameOver == false)
+            while (GameOver == false)
             {
                 if (direction == Direction.up)
                 {
@@ -123,6 +127,44 @@ namespace snake.cs
                 Game.draw();
                 Thread.Sleep(speed);
             }
+        }
+
+        public static void MoveSnake2(object state)
+        {
+
+            if (Game.snake.body.Count % 5 == 0)
+            {
+                speed -= 50;
+            }
+            if (direction == Direction.up)
+            {
+                if (Game.snake.body[0].y > 0)
+                    Game.snake.move(0, -1);
+                else
+                    Game.snake.body[0].y = Console.WindowHeight - 2;
+            }
+            else if (direction == Direction.down)
+            {
+                if (Game.snake.body[0].y < Console.WindowHeight - 2)
+                    Game.snake.move(0, 1);
+                else
+                    Game.snake.body[0].y = 0;
+            }
+            else if (direction == Direction.left)
+            {
+                if (Game.snake.body[0].x > 0)
+                    Game.snake.move(-1, 0);
+                else
+                    Game.snake.body[0].x = Console.WindowWidth - 2;
+            }
+            else if (direction == Direction.right)
+            {
+                if (Game.snake.body[0].x < Console.WindowWidth - 2)
+                    Game.snake.move(1, 0);
+                else
+                    Game.snake.body[0].x = 0;
+            }
+            Game.draw();
         }
     }
 }

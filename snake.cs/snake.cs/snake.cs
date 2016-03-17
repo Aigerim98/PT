@@ -18,8 +18,8 @@ namespace snake.cs
         }
         public void move(int dx, int dy)
         {
-            //Console.SetCursorPosition(body[body.Count-1].x,body[body.Count-1].y);
-            //Console.Write(" ");
+            Console.SetCursorPosition(body[body.Count-1].x,body[body.Count-1].y);
+            Console.Write(" ");
             for (int i = body.Count - 1; i > 0; i--)
             {
                 body[i].x = body[i - 1].x;//при передвижении предыдущие части тела переходят в другую
@@ -44,10 +44,19 @@ namespace snake.cs
         }
         public void newPosition()//новая безопасная позиция змейки при изменеия уровня
         {
+            foreach (Point p in body) {
+                Console.SetCursorPosition(p.x,p.y);
+                Console.Write(" ");
+            }
             Game.snake.body.Clear();
-            if (Collision() == false)
+            int x = new Random().Next() % 15;
+            int y = new Random().Next() % 15;
+
+            while(Collision() == false)
             {
-                Game.snake.body.Add(new Point(new Random().Next() % 15, new Random().Next() % 15));
+                x = new Random().Next() % 15;
+                y = new Random().Next() % 15;
+                Game.snake.body.Add(new Point(x, y));
             }
         }
         public bool Collision()//столкновение со стеной
