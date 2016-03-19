@@ -59,6 +59,8 @@
             this.button25 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
             this.memory_text = new System.Windows.Forms.TextBox();
+            this.button27 = new System.Windows.Forms.Button();
+            this.button28 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button
@@ -83,6 +85,7 @@
             // 
             // button3
             // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button3.Location = new System.Drawing.Point(197, 252);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(41, 76);
@@ -247,7 +250,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(8, 35);
+            this.textBox1.Location = new System.Drawing.Point(9, 35);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(275, 40);
@@ -260,7 +263,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 363);
+            this.splitter1.Size = new System.Drawing.Size(3, 353);
             this.splitter1.TabIndex = 20;
             this.splitter1.TabStop = false;
             // 
@@ -277,6 +280,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.button1.Location = new System.Drawing.Point(8, 130);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 35);
@@ -376,13 +380,36 @@
             this.memory_text.Name = "memory_text";
             this.memory_text.Size = new System.Drawing.Size(87, 30);
             this.memory_text.TabIndex = 31;
+            this.memory_text.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.memory_text.TextChanged += new System.EventHandler(this.memory_text_TextChanged);
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(102, 81);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(41, 35);
+            this.button27.TabIndex = 32;
+            this.button27.Text = "n!";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.operation);
+            // 
+            // button28
+            // 
+            this.button28.Location = new System.Drawing.Point(149, 81);
+            this.button28.Name = "button28";
+            this.button28.Size = new System.Drawing.Size(41, 35);
+            this.button28.TabIndex = 33;
+            this.button28.Text = "x^n";
+            this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.operation);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(289, 363);
+            this.ClientSize = new System.Drawing.Size(289, 353);
+            this.Controls.Add(this.button28);
+            this.Controls.Add(this.button27);
             this.Controls.Add(this.memory_text);
             this.Controls.Add(this.button26);
             this.Controls.Add(this.button25);
@@ -459,6 +486,8 @@
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.TextBox memory_text;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button28;
     }
 }
 

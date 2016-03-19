@@ -25,7 +25,15 @@ namespace calculator
             InitializeComponent();
             
         }
-
+        public double fact(double n)
+        {
+            if (n < 0)
+                return 0;
+            if (n == 0)
+                return 0;
+            else
+                return n * fact(n - 1);
+        } 
 
         private void button_Click(object sender, EventArgs e)
         {
@@ -81,7 +89,7 @@ namespace calculator
                     textBox1.Text = ((value / 100.0)*Double.Parse(textBox1.Text)).ToString();
                     break;
                 case "MS":
-                    memory_num=value;
+                    memory_num = value;
                     memory_text.Text= (value).ToString();
                     break;
                 case "M+":
@@ -95,6 +103,22 @@ namespace calculator
                     break;
                 case "+|-":
                     textBox1.Text = (-(value)).ToString();
+                    break;
+                case "n!":
+                    int result = 1;
+                    for(int i = 1; i <= value; i++)
+                    {
+                        result*= i;
+                    }
+                    textBox1.Text = (result).ToString();
+                    break;
+                case "x^n":
+                    double pow = 1;
+                    for(int i = 1; i <= Double.Parse(textBox1.Text); i++)
+                    {
+                        pow *= value;
+                    }
+                    textBox1.Text = (pow).ToString();
                     break;
                 default:
                     break;        
@@ -125,18 +149,12 @@ namespace calculator
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dr = MessageBox.Show("вы уверены, что хотите выйти?", "Закрытие калькулятора", MessageBoxButtons.YesNoCancel);
+            DialogResult dr = MessageBox.Show("Вы уверены, что хотите выйти?", "Закрытие калькулятора", MessageBoxButtons.YesNoCancel);
             if (dr == DialogResult.Yes)
                 e.Cancel = false;
             else
                 e.Cancel = true;
         }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-            value = memory_num;
-        }
-
         private void memory_text_TextChanged(object sender, EventArgs e)
         {
 
