@@ -25,24 +25,15 @@ namespace calculator
             InitializeComponent();
             
         }
-        public double fact(double n)
-        {
-            if (n < 0)
-                return 0;
-            if (n == 0)
-                return 0;
-            else
-                return n * fact(n - 1);
-        } 
 
         private void button_Click(object sender, EventArgs e)
         {
             if ((textBox1.Text == "0") ||(operation_pressed))
                 textBox1.Clear();
 
-            operation_pressed = false;
+            operation_pressed = false;//позволяет вводить две или более цифр
             Button b = (Button)sender;
-            textBox1.Text = textBox1.Text + b.Text;
+            textBox1.Text = textBox1.Text + b.Text;//отлавливание цифр
         }
 
         private void operation(object sender, EventArgs e)
@@ -50,11 +41,11 @@ namespace calculator
             Button b = (Button)sender;
             operations = b.Text;
             value = Double.Parse(textBox1.Text);
-            operation_pressed = true;
+            operation_pressed = true;//позволяет стереть первое число
             equation.Text = value + " " + operations;
         }
 
-        private void button17_Click(object sender, EventArgs e)
+        private void button17_Click(object sender, EventArgs e)//кнопка СЕ
         {
             textBox1.Text = "0";
         }
@@ -86,7 +77,7 @@ namespace calculator
                     textBox1.Text = (value * value).ToString();
                     break; 
                 case "%":
-                    textBox1.Text = ((value / 100.0)*Double.Parse(textBox1.Text)).ToString();
+                    textBox1.Text = ((value / 100.0) * Double.Parse(textBox1.Text)).ToString();
                     break;
                 case "MS":
                     memory_num = value;
@@ -125,7 +116,7 @@ namespace calculator
             }
         }
 
-        private void button18_Click(object sender, EventArgs e)
+        private void button18_Click(object sender, EventArgs e)//кнопка С
         {
             textBox1.Clear();
             equation.Text = "";
@@ -158,6 +149,11 @@ namespace calculator
         private void memory_text_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
         }
     }
 }
