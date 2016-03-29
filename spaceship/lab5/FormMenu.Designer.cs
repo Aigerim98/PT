@@ -33,13 +33,15 @@
             // 
             // start
             // 
+            this.start.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.start.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.start.Location = new System.Drawing.Point(220, 197);
+            this.start.ForeColor = System.Drawing.Color.Red;
+            this.start.Location = new System.Drawing.Point(229, 234);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(125, 66);
             this.start.TabIndex = 0;
             this.start.Text = "Начать игру";
-            this.start.UseVisualStyleBackColor = true;
+            this.start.UseVisualStyleBackColor = false;
             this.start.Click += new System.EventHandler(this.start_Click);
             // 
             // FormMenu
