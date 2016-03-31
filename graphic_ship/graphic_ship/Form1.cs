@@ -13,7 +13,7 @@ namespace graphic_ship
     public partial class Form1 : Form
     {
         Graphics g;
-        SolidBrush brush, stars, ship,gun;
+        SolidBrush brush, stars, ship,gun,asteroids;
         public Form1()
         {
             InitializeComponent();
@@ -22,26 +22,75 @@ namespace graphic_ship
             stars = new SolidBrush(Color.White);
             ship = new SolidBrush(Color.Yellow);
             gun = new SolidBrush(Color.Green);
+            asteroids = new SolidBrush(Color.Red);
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            g.FillRectangle(brush,0,0,645,554);
+            g.FillRectangle(brush,0,0,Width,Height);
             for(int i = 0; i < 5; i++)
             {
                 g.FillEllipse(stars,draw_stars(i+1));
+                g.FillPolygon(asteroids,draw_asteroids(i+1));
             }
-            /*g.FillEllipse(stars,37,101,20,20);
-            g.FillEllipse(stars,250,55,20,20);
-            g.FillEllipse(stars,495,151,30,30);
-            g.FillEllipse(stars,486,366,40,40);
-            g.FillEllipse(stars,68,295,45,45);*/
-            //Point[] points = {new Point(241,227), new Point(241,287), new Point(271,307), new Point(301,287), new Point(301,227), new Point(271,174) };
-            //Point[] guns = { new Point(261, 237), new Point(261, 257), new Point(271,257), new Point(271,287), new Point(291,257), new Point(291,237) };
             g.FillPolygon(ship,draw_spaceship(241,227));
-            //g.FillPolygon(gun,guns);
+            g.FillPolygon(gun,draw_guns(261,257));
         }
-
+        private Point[] draw_asteroids(int n)
+        {
+            int x = 0, y = 0;
+            switch (n)
+            {
+                case 1:
+                    x = 104;
+                    y = 269;
+                    break;
+                case 2:
+                    x = 211;
+                    y = 123;
+                    break;
+                case 3:
+                    x = 484;
+                    y = 121;
+                    break;
+                case 4:
+                    x = 500;
+                    y = 334;
+                    break;
+                case 5:
+                    x = 272;
+                    y = 481;
+                    break;
+                default:
+                    break;
+            }
+            Point asteroids_p1 = new Point(x,y);
+            Point asteroids_p2 = new Point(x - 10,y - 10);
+            Point asteroids_p3 = new Point(x - 20,y - 10);
+            Point asteroids_p4 = new Point(x - 10,y - 20);
+            Point asteroids_p5 = new Point(x - 20,y - 30);
+            Point asteroids_p6 = new Point(x - 10,y - 30);
+            Point asteroids_p7 = new Point(x,y - 40);
+            Point asteroids_p8 = new Point(x + 10,y - 30);
+            Point asteroids_p9 = new Point(x + 20, y - 30);
+            Point asteroids_p10 = new Point(x + 10, y - 20);
+            Point asteroids_p11 = new Point(x + 20, y - 10);
+            Point asteroids_p12 = new Point(x + 10, y - 10);
+            Point[] asteroid_points = { asteroids_p1, asteroids_p2, asteroids_p3, asteroids_p4, asteroids_p5, asteroids_p6, asteroids_p7, asteroids_p8, asteroids_p9, asteroids_p10, asteroids_p11, asteroids_p12 };
+            return asteroid_points;
+        }
+        private Point[] draw_guns(int x, int y)
+        {
+            Point guns_p1 = new Point(x,y);
+            Point guns_p2 = new Point(x,y-20);
+            Point guns_p3 = new Point(x-5,y-20);
+            Point guns_p4 = new Point(x+8,y-40);
+            Point guns_p5 = new Point(x+20,y-20);
+            Point guns_p6 = new Point(x+16,y-20);
+            Point guns_p7 = new Point(x+16,y);
+            Point[] guns_points = {guns_p1,guns_p2,guns_p3,guns_p4,guns_p5,guns_p6,guns_p7};
+            return guns_points;
+        }
         private Point[] draw_spaceship(int x, int y)
         {
             Point spaceship_p1 = new Point(x, y);
